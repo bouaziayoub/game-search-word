@@ -1,5 +1,7 @@
 const btn = document.getElementById("btn");
-
+const word = document.getElementById("current-word");
+const message = document.querySelector(".message");
+let letra = document.getElementById("letra");
 
 let contadorErrores = 0;
 let secretWords = [
@@ -49,7 +51,7 @@ let secretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
 
 let currentWord = secretWord.replace(/./g, "_ ");
 
-document.getElementById("current-word").innerHTML = currentWord;
+word.innerHTML = currentWord;
 
 // ! Función para reemplazar un caracter en una cadena
 function replaceAt(string, index, replace) {
@@ -60,42 +62,39 @@ function replaceAt(string, index, replace) {
 }
 
 // ! Función para evaluar la letra introducida
-function evaluateLetter() {
-  let letra = document.getElementById("letra").value;
-  let posicionCoincidencia = secretWord.indexOf(letra);
+function evaluateLetter(letra) {
+  let letraValue = letra.value;
+  console.log(letraValue);
+  let posicionCoincidencia = secretWord.indexOf(letraValue);
   if (posicionCoincidencia >= 0) {
     for (i = 0; i < secretWord.length; i++) {
-      if (secretWord[i] === letra) {
-        // currentWord =
-        //   currentWord.substring(0, i * 2) +
-        //   letra +
-        //   currentWord.substring(i * 2 + 1);
-        currentWord = replaceAt(currentWord, i * 2, letra);
+      if (secretWord[i] === letraValue) {
+        currentWord = replaceAt(currentWord, i * 2, letraValue);
       }
     }
-    document.getElementById("current-word").innerHTML = currentWord;
-    document.getElementById("letra").value = "";
+    word.innerHTML = currentWord;
+    letraValue = "";
   } else {
     contadorErrores++;
-    document.querySelector(".message").innerHTML = contadorErrores;
-    if (contadorErrores === 6) {
-      document.querySelector(".message").style.display = "block";
-      document.querySelector(".message").style.color = "red";
-      document.querySelector(".message").innerHTML = "Has perdido";
+    message.innerHTML = contadorErrores;
+    if (contadorErrores >= 6) {
+      message.style.display = "block";
+      message.style.color = "red";
+      message.innerHTML = `Has perdido!! <span style="color: black"> la palabra era:  ${secretWord}`;
     }
   }
 
   // ! Comprobamos si se ha completado la palabra
   if (currentWord.indexOf("_") === -1) {
-    document.querySelector(".message").style.display = "block";
-    document.querySelector(".message").style.color = "green";
-    document.querySelector(".message").innerHTML = "Has ganado";
+    message.style.display = "block";
+    message.style.color = "green";
+    message.innerHTML = "Has ganado";
   }
-  document.getElementById("letra").value = "";
+  letraValue = "";
 }
 
 // ! Evento para el botón
 btn.addEventListener("click", (e) => {
   e.preventDefault();
-  evaluateLetter();
+  evaluateLetter(letra);
 });
