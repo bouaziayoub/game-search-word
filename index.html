@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Juego de buscarf palabras" />
+    <meta name="keywords" content="juego buscar palabras" />
+    <meta name="author" content="Ayoub bouazi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="1 day" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Buscar palabras</title>
+  </head>
+  <body>
+    <header>
+      <h1>Juego de buscar palabras</h1>
+    </header>
+    <main>
+      <div class="desc">
+        <p>
+          El juego consiste en adivinar una palabra, tienes que introducir una
+          letra y si la palabra contiene esa letra, se mostrará en la palabra
+          oculta, si no, se mostrará un mensaje de error.
+        </p>
+      </div>
+      <div class="row">
+        <div class="juego">
+          <div class="content">
+            <div id="current-word"></div>
+            <p class="bold">Intorduzca una letra</p>
+            <form action="">
+              <input
+                type="text"
+                name="letra"
+                id="letra"
+                placeholder="Introduzca una letra"
+              />
+              <button type="submit" id="btn">Comprobar</button>
+            </form>
+            <div class="message"></div>
+          </div>
+          <div id="buscaPalabras"></div>
+        </div>
+      </div>
+      <div class="contador"></div>
+    </main>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
