@@ -6,53 +6,178 @@
 }
 
 body {
+  background-image: linear-gradient(
+      rgba(130, 44, 44, 0.3),
+      rgba(255, 0, 0, 0.3)
+    ),
+    url("../img/letters.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #fff;
 }
 header {
-  background-color: #f2f2f2;
   padding: 20px;
   text-align: center;
 }
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #fff;
+  /* background-color: #ffffffaa; */
+}
 main {
   padding: 20px;
+  background-color: rgba(0, 0, 0, 0.466);
+  width: 60%;
+  margin: 6rem auto;
+  border-radius: 5px;
 }
 .row {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 .juego {
+  display: none;
   width: 50%;
-  border: 1px solid #000;
+  border: 3px solid #ffffffaa;
   padding: 20px;
 }
-.content {
-  margin-bottom: 20px;
-}
+/* .content {
+  margin-bottom: 0px;
+} */
+
 .content form {
   display: flex;
-  /* justify-content: center; */
-
+  justify-content: center;
   align-items: center;
 }
-.content input {
+
+.content input,
+.datosUsuario .input-nombre,
+.anadir-palabra-contenidor .input-palabra {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.678);
+  border: 1px solid #fff;
+  border-radius: 2px;
   padding: 10px;
   margin-right: 10px;
 }
-.content button {
+
+.content input:focus,
+.datosUsuario .input-nombre:focus,
+.anadir-palabra-contenidor .input-palabra:focus {
+  outline: none;
+  border: 1px solid #000000;
+  /* background-color: rgba(167, 167, 167, 0.678); */
+  background-color: rgba(69, 69, 69, 0.678);
+}
+
+.content button,
+.datosUsuario .btn-entrar,
+.anadir-palabra-contenidor .btn-add,
+.btn-iniciar,
+.btnGuessWord {
   padding: 10px;
   background-color: #000;
   color: #fff;
   border: none;
   cursor: pointer;
+  border-radius: 2px;
 }
-.content .message {
+
+.message {
   display: none;
-  font-weight: bold;
+  padding: 10px;
+  border: 2px solid red;
+  text-align: center;
+  font-size: 1rem;
+  /* color: red; */
+  background-color: lightcoral;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
 }
-.contador {
+
+.emoji{
+  font-size: 7rem;
+  text-align: center;
+}
+/* .contador {
   text-align: center;
   font-weight: bold;
+  margin-top: 20px;
+  font-size: 20px;
+} */
+
+/* Datos de jugador */
+.datosUsuario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Ocultar opciones (el form de añadir nueva palabra, btn inicia juego */
+.elegir-opcion,
+.anadir-palabra-contenidor {
+  display: none;
+  text-align: center;
+}
+.opc-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.elegir-opcion .title-elegir {
+  text-align: center;
+}
+
+.tiempo {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: rgb(255, 97, 97);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(71, 71, 71, 0.3), rgba(255, 0, 0, 0.3);
+  padding: 10px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  main {
+    width: 90%;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .juego {
+    width: auto;
+  }
+  .content form {
+    flex-direction: column;
+  }
+  .content input,
+  .content button {
+    margin: 10px 0;
+  }
+  .opc-container {
+    flex-direction: column;
+  }
+  .opc-container button {
+    margin: 10px 0;
+  }
 }

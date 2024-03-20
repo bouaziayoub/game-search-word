@@ -16,6 +16,7 @@
       <h1>Juego de buscar palabras</h1>
     </header>
     <main>
+      <!-- Descripcio de juego -->
       <div class="desc">
         <p>
           El juego consiste en adivinar una palabra, tienes que introducir una
@@ -23,6 +24,50 @@
           oculta, si no, se mostrará un mensaje de error.
         </p>
       </div>
+
+      <!-- Formulario para introducir nombre -->
+      <div class="datosUsuario">
+        <form action="">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            name="nombre"
+            class="input-nombre"
+            placeholder="Tu nombre"
+          />
+          <button class="btn-entrar">Entrar</button>
+        </form>
+      </div>
+
+      <div class="elegir-opcion">
+        <div class="title-elegir">
+          <h2>Inicia tu juego con:</h2>
+        </div>
+        <div class="opc-container">
+          <!-- Button iniciar partida -->
+          <div>
+            <button class="btn-iniciar">Palabra aleatoria</button>
+          </div>
+          <!-- Button añadir palabra -->
+          <div>
+            <button class="btnGuessWord">Palabra adivinada</button>
+          </div>
+        </div>
+      </div>
+      <!-- Añadir palabra -->
+      <div class="anadir-palabra-contenidor">
+        <form action="">
+          <label for="nueva-palabra">Nueva palabra</label>
+          <input
+            type="text"
+            name="nueva-palabra"
+            class="input-palabra"
+            placeholder="Ej: loco"
+          />
+          <button class="btn-add">Añadir</button>
+        </form>
+      </div>
+      <!-- Juego -->
       <div class="row">
         <div class="juego">
           <div class="content">
@@ -37,13 +82,22 @@
               />
               <button type="submit" id="btn">Comprobar</button>
             </form>
-            <div class="message"></div>
           </div>
           <div id="buscaPalabras"></div>
         </div>
       </div>
-      <div class="contador"></div>
+      <div class="message"></div>
+      <div class="emoji"></div>
+
+      <!-- Implementar un reloj cuando se inicia la partida dando el tiempo total usado al ganar. -->
+      <div class="tiempo">
+        <p>Tiempo: <span id="countTime">00:00:00</span> segundos</p>
+      </div>
     </main>
+
+    <footer>
+      <p>Desarrollado por A.Bouazi</p>
+    </footer>
 
     <script src="./js/index.js"></script>
   </body>
