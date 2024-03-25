@@ -114,6 +114,8 @@ btnEntrarJugar.addEventListener("click", (e) => {
 
   if (nombre.value.length < 2) {
     message.style.display = "block"; // mostrar mensaje
+    // Function errorMensaje
+    errorMensaje();
     message.innerHTML = "Introduce un nombre válido mas de 2 caracteres 🤔";
   } else {
     message.style.display = "none"; // ocultar mensaje
@@ -160,11 +162,13 @@ btnAdd.addEventListener("click", (e) => {
 btnComprobarLetra.addEventListener("click", (e) => {
   e.preventDefault();
   evaluateLetter(letra);
+  letra.value = ""; // limpiar input letra
 });
 
 // Evento para el botón de volver atrás
 btnVolverAtras.addEventListener("click", () => {
   message.style.display = "none"; // ocultar mensaje
+  limpiaInputs(); // limpiar inputs
   if (
     anadirPlabraContenidor.style.display === "block" ||
     juego.style.display === "block"
@@ -239,7 +243,9 @@ function evaluateLetter(letra) {
       }
     }
     word.innerHTML = currentWord;
+    console.log(letraValue);
     letraValue = "";
+    console.log(letraValue);
   } else {
     contadorErrores++;
     emoji.innerHTML = contadorErrores;
@@ -254,23 +260,52 @@ function evaluateLetter(letra) {
     } else if (contadorErrores === 5) {
       emoji.innerHTML = " 😧";
     } else if (contadorErrores >= 6) {
-      message.style.display = "block"; // mostrar mensaje
-
+      // Call errorMensaje function
+      errorMensaje();
+      // Call
       cleanEmojiTime();
       message.innerHTML = `OOOH 😱 ${nombre.value}, Has perdido!! <span style="color: black"> la palabra era:  ${secretWord}`;
     }
   }
   // ! Comprobamos si se ha completado la palabra y mostrar el tiempo que ha tardado
   if (currentWord.indexOf("_") === -1) {
-    message.style.display = "block"; // mostrar mensaje
-    message.style.color = "green";
-    message.style.border = "2px solid green";
-    message.style.backgroundColor = "lightgreen";
-    message.innerHTML = `Felicidades 🎈🎉🎈 ${nombre.value}, Has ganado. La duración fue de ${hours}:${minutes}:${seconds}`; // felicidades
-
+    // Call successMessage function
+    successMessage();
     // Call cleanEmojiTime function
     cleanEmojiTime();
   }
 
   letraValue = "";
 }
+
+// function limpiaInput()
+function limpiaInputs() {
+  letra.value = "";
+  nuevaPalabra.value = "";
+  nombre.value = "";
+  countTime.textContent = `00:00:00`;
+  // clearInterval(setInterval(chronometer, 1000));
+}
+
+// Clear interval
+// function limpiaInputs() {
+//   cleanInputs();
+// }
+
+// Función para mostrar mensaje de error
+function errorMensaje() {
+  message.style.display = "block"; // mostrar mensaje
+  message.style.color = "red";
+  message.style.border = "2px solid red";
+  message.style.backgroundColor = "lightcoral";
+}
+
+// Función para mostrar mensaje de éxito
+function successMessage() {
+  message.style.display = "block"; // mostrar mensaje
+  message.style.color = "green";
+  message.style.border = "2px solid green";
+  message.style.backgroundColor = "lightgreen";
+  message.innerHTML = `Felicidades 🎈🎉🎈 ${nombre.value}, Has ganado. La duración fue de ${hours}:${minutes}:${seconds}`; // felicidades
+}
+// ----------------------------- FIN --------------------------------
